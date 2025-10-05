@@ -1,15 +1,11 @@
-
-cat > README.md <<'MD'
-# Multithreaded Strategy Executor — HFT Exercise
-
 This exercise simulates a simple HFT loop: a market-data producer pushes ticks into a queue, and your strategy runs in multiple threads to consume and process them.
 
-## Files
+## FILES
 - **`market_data_api.py`** — mock data producer. Do not modify.  
-- **`strategy_executor.py`** — your work goes here. Implement the multithreaded consumers.  
+- **`strategy_executor.py`** — your work goes here. Implement.
 - **`README.md`** — these instructions.
 
-## Goal
+## MAIN GOAL
 Implement a strategy executor that:
 1. Starts the provided market-data stream.
 2. Launches **N worker threads** (e.g., 4).
@@ -26,7 +22,7 @@ Implement a strategy executor that:
    - Drain any remaining items.
    - Join worker threads.
 
-## Hints
+## REFERENCE
 - Use `threading.Thread(target=..., args=(...))`.
 - Use `queue.Queue()` for thread-safe handoff.
 - `data_queue.get(timeout=1)` lets workers wake up to check for shutdown.
@@ -34,12 +30,10 @@ Implement a strategy executor that:
 - Use `data_queue.join()` to wait until all queued items are processed.
 - A shared `print_lock = threading.Lock()` avoids interleaved output.
 
-## Stretch Ideas
+## STRETCH GOALS
 - Measure latency from tick creation to processing.
 - Use `concurrent.futures.ThreadPoolExecutor`.
 - Run multiple producers to simulate multiple venues.
 
-## Run
-```bash
+## TO RUN
 python strategy_executor.py
-
